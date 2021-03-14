@@ -1,163 +1,165 @@
-const express= require('express');
-const bodyParser=require('body-parser');
-const request=require('request');
-const path = require('path');
-const https=require('https');
+// const express= require('express');
+// const bodyParser=require('body-parser');
+// const request=require('request');
+// const path = require('path');
+// const https=require('https');
 
-const { json } = require('body-parser');
-const { url } = require('inspector');
-const { post } = require('request');
-const { response } = require('express');
+// const { json } = require('body-parser');
+// const { url } = require('inspector');
+// const { post } = require('request');
+// const { response } = require('express');
 
-const app=express();
+// const app=express();
 
-const PORT=process.env.PORT || 4000;
+// const PORT=process.env.PORT || 4000;
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static(path.join(__dirname,'public')));
-// app.get('/',function(req,res){
-//     res.sendFile(__dirname+"/signup.html");
-// });
+// app.use(bodyParser.urlencoded({extended:true}))
+// app.use(express.static(path.join(__dirname,'public')));
+// // app.get('/',function(req,res){
+// //     res.sendFile(__dirname+"/signup.html");
+// // });
 
-// app.post('/',function(req,res){
+// // app.post('/',function(req,res){
 
-//     const fname=req.body.fname;
-//     const lname=req.body.lname;
-//     const email=req.body.email;
-//     console.log(fname+" "+lname+" "+email);
-//   
-// const jsonData=JSON.stringify(data);
-// const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
-// const options={
-//     method: "POST",
-//     auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
-// }
-// const request = https.request(url,options,function(response){
-//     response.on("data",function(data){
-//         console.log(JSON.parse(data));
-//     })
-// })
+// //     const fname=req.body.fname;
+// //     const lname=req.body.lname;
+// //     const email=req.body.email;
+// //     console.log(fname+" "+lname+" "+email);
+// //   
+// // const jsonData=JSON.stringify(data);
+// // const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
+// // const options={
+// //     method: "POST",
+// //     auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
+// // }
+// // const request = https.request(url,options,function(response){
+// //     response.on("data",function(data){
+// //         console.log(JSON.parse(data));
+// //     })
+// // })
 
-// request.write(jsonData);
-// request.end();
-// })
+// // request.write(jsonData);
+// // request.end();
+// // })
 
-app.post('/signup',(req,res) => {
-  const{fname, lname, email} = req.body;
+// app.post('/signup',(req,res) => {
+//   const{fname, lname, email} = req.body;
 
-// construct request data
-  const data={
-    members: [
-      {
-        email_address: email,
-        status: 'subscribed',
-        merge_feilds: {
-          FNAME: fname,
-          LNAME: lname,
-        }
-      }
-    ]
-  }
+// // construct request data
+//   const data={
+//     members: [
+//       {
+//         email_address: email,
+//         status: 'subscribed',
+//         merge_feilds: {
+//           FNAME: fname,
+//           LNAME: lname,
+//         }
+//       }
+//     ]
+//   }
 
-  const postData=JSON.stringify(data);
-  const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
-  const options={
-      method: "POST",
-      auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
-  }
-  const request = https.request(url,options,function(response){
-      response.on("data",function(data){
-          console.log(JSON.parse(data));
-      })
-  })
+//   const postData=JSON.stringify(data);
+//   const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
+//   const options={
+//       method: "POST",
+//       auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
+//   }
+//   const request = https.request(url,options,function(response){
+//       response.on("data",function(data){
+//           console.log(JSON.parse(data));
+//       })
+//   })
   
-  request.write(postData);
-  request.end();
+//   request.write(postData);
+//   request.end();
 
-  // const options = {
-  //   url:'https://us1.api.mailchimp.com/3.0/lists/29adb3699f',
-  //   method: 'POST',
-  //   headers:{
-  //     Authorization:'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
-  //   },
-  //   body: postData
+//   // const options = {
+//   //   url:'https://us1.api.mailchimp.com/3.0/lists/29adb3699f',
+//   //   method: 'POST',
+//   //   headers:{
+//   //     Authorization:'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
+//   //   },
+//   //   body: postData
 
-  // }
-  // request(options, (err,response,body)=>{
-  //   if(err){
-  //     res.redirect('/faliure.html');
-  //   }else{
-  //     if(Response.statusCode===200){
-  //       res.redirect('/success.html');
-  //     }else{
-  //       res.redirect('/faliure.html');
-  //     }
-  //   }
+//   // }
+//   // request(options, (err,response,body)=>{
+//   //   if(err){
+//   //     res.redirect('/faliure.html');
+//   //   }else{
+//   //     if(Response.statusCode===200){
+//   //       res.redirect('/success.html');
+//   //     }else{
+//   //       res.redirect('/faliure.html');
+//   //     }
+//   //   }
 
-  // })
-})
+//   // })
+// })
 
-app.listen(PORT,function(){
-    console.log("listening at 4000: ");
-});
+
 
 
 
 // // });
 // // 29adb3699f
 // // apikey
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const path = require('path');
-// const fetch = require('node-fetch');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const fetch = require('node-fetch');
 
-// const app = express();
+const app = express();
 
-// // Bodyparser Middleware
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.get('/',function(req,res){
+      res.sendFile(__dirname+"/signup.html");
+  });
+// Bodyparser Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// // Static folder
-// app.use(express.static(path.join(__dirname, 'public')));
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-// // Signup Route
-// app.post('/signup', (req, res) => {
-//   const { firstName, lastName, email } = req.body;
+// Signup Route
+app.post('/signup', (req, res) => {
+  const { firstName, lastName, email } = req.body;
 
-//   // Make sure fields are filled
-//   if (!firstName || !lastName || !email) {
-//     res.redirect('/failure.html');
-//     return;
-//   }
+  // Make sure fields are filled
+  if (!firstName || !lastName || !email) {
+    res.redirect('/failure.html');
+    return;
+  }
 
-//   // Construct req data
-//   const data = {
-//     members: [
-//       {
-//         email_address: email,
-//         status: 'subscribed',
-//         merge_fields: {
-//           FNAME: firstName,
-//           LNAME: lastName
-//         }
-//       }
-//     ]
-//   };
+  // Construct req data
+  const data = {
+    members: [
+      {
+        email_address: email,
+        status: 'subscribed',
+        merge_fields: {
+          FNAME: firstName,
+          LNAME: lastName
+        }
+      }
+    ]
+  };
 
-//   const postData = JSON.stringify(data);
+  const postData = JSON.stringify(data);
 
-//   fetch('https://us1.api.mailchimp.com/3.0/lists/29adb3699f', {
-//     method: 'POST',
-//     headers: {
-//       Authorization: 'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
-//     },
-//     body: postData
-//   })
-//     .then(res.statusCode === 200 ?
-//       res.redirect('/success.html') :
-//       res.redirect('/failure.html'))
-//     .catch(err => console.log(err))
-// })
+  fetch('https://us1.api.mailchimp.com/3.0/lists/29adb3699f', {
+    method: 'POST',
+    headers: {
+      Authorization: 'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
+    },
+    body: postData
+  })
+    .then(res.statusCode === 200 ?
+      res.redirect('/success.html') :
+      res.redirect('/failure.html'))
+    .catch(err => console.log(err))
+})
 
-// const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
-// app.listen(PORT, console.log(`Server started on ${PORT}`));
+
+app.listen(PORT, console.log(`Server started on ${PORT}`));
