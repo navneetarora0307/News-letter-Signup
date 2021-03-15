@@ -60,10 +60,10 @@
 //   }
 
 //   const postData=JSON.stringify(data);
-//   const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
+//   const url="https://us1.api.mailchimp.com/3.0/lists/"
 //   const options={
 //       method: "POST",
-//       auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
+//       auth: "navneet:"
 //   }
 //   const request = https.request(url,options,function(response){
 //       response.on("data",function(data){
