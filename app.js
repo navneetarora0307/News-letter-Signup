@@ -27,10 +27,10 @@
 // //     console.log(fname+" "+lname+" "+email);
 // //   
 // // const jsonData=JSON.stringify(data);
-// // const url="https://us1.api.mailchimp.com/3.0/lists/29adb3699f"
+// // const url="https://us1.api.mailchimp.com/3.0/lists/"
 // // const options={
 // //     method: "POST",
-// //     auth: "navneet:91333c9328cfa14b69fca1e0d2c8bb40-us1"
+// //     auth: "navneet:"
 // // }
 // // const request = https.request(url,options,function(response){
 // //     response.on("data",function(data){
@@ -75,10 +75,10 @@
 //   request.end();
 
 //   // const options = {
-//   //   url:'https://us1.api.mailchimp.com/3.0/lists/29adb3699f',
+//   //   url:'https://us1.api.mailchimp.com/3.0/lists/',
 //   //   method: 'POST',
 //   //   headers:{
-//   //     Authorization:'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
+//   //     Authorization:'auth '
 //   //   },
 //   //   body: postData
 
@@ -102,7 +102,7 @@
 
 
 // // });
-// // 29adb3699f
+
 // // apikey
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -144,12 +144,14 @@ app.post('/signup', (req, res) => {
     ]
   };
 
+  var mykey = config.MY_API_TOKEN;
+  var mykey2 = config.KEY_1;
   const postData = JSON.stringify(data);
 
-  fetch('https://us1.api.mailchimp.com/3.0/lists/29adb3699f', {
+  fetch('https://us1.api.mailchimp.com/3.0/lists/'+mykey2, {
     method: 'POST',
     headers: {
-      Authorization: 'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
+      Authorization: 'auth '+mykey
     },
     body: postData
   })
