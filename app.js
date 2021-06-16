@@ -108,8 +108,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fetch = require('node-fetch');
+const { env } = require('process');
 
 const app = express();
+require('dotenv').config();
 
 app.get('/',function(req,res){
       res.sendFile(__dirname+"/signup.html");
@@ -144,8 +146,8 @@ app.post('/signup', (req, res) => {
     ]
   };
 
-  var mykey = config.MY_API_TOKEN;
-  var mykey2 = config.KEY_1;
+  var mykey = process.env.MY_API_TOKEN;
+  var mykey2 = process.env.KEY_1;
   const postData = JSON.stringify(data);
 
   fetch('https://us1.api.mailchimp.com/3.0/lists/'+mykey2, {
