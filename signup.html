@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>News Letter SignUp</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+ <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="styles.css">
-
+	<title>News Letter SignUp</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="container">	
-<form method="POST" action="/signup">
-	<img class="mb-4" src="data:image/png;base64,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" alt="" width="72" height="72">
-  <div class="mb-3">
-  	<div  class="form-text">Sign-up to our News-letter</div>
-  		<input type="text" placeholder="First Name" name="firstName" class="form-control" required autofocus>
-  		<input type="text" placeholder="Last Name" name="lastName" class="form-control" required> 
-  		<input type="email" placeholder="Email Address" name="email" class="form-control" required>
-    
-  </div>
-  
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="Submit" class="btn btn-primary">Sign-up</button>
-</form>
-</div>
+	<div class="modal-dialog modal-newsletter">
+			<div class="modal-content">
+				<form method="POST" action="/signup">
+					<div class="modal-header">
+						<div class="icon-box mx-auto">						
+							<i class="fa fa-envelope-open-o"></i>
+						</div>
+					</div>
+					<div class="modal-body text-center">
+						<h4>Subscribe to our newsletter</h4>	
+						<p>Join our subscribers list to get the latest news, updates and special offers delivered directly in your inbox and be a part of our awesome family.</p>
+						<div class="input-group">
+							<input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+							<input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+							<input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+						</div>
+						<div class="input-group-append" id="checkbox">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<label class="form-check-label" for="exampleCheck1">Check me out</label>
+						</div>
+						<div class="input-group-append">
+							<button type="Submit" class="btn btn-primary">SUBSCRIBE</button>
+						</div>
+					</div>
+				</form>			
+			</div>
+	</div>
 </body>
 </html>
