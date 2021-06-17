@@ -146,14 +146,14 @@ app.post('/signup', (req, res) => {
     ]
   };
 
-  var mykey = process.env.MY_API_TOKEN;
-  var mykey2 = process.env.KEY_1;
+  // var mykey = process.env.MY_API_TOKEN;
+  // var mykey2 = process.env.KEY_1;
   const postData = JSON.stringify(data);
 
-  fetch('https://us1.api.mailchimp.com/3.0/lists/'+mykey2, {
+  fetch('https://us1.api.mailchimp.com/3.0/lists/29adb3699f', {
     method: 'POST',
     headers: {
-      Authorization: 'auth '+mykey
+      Authorization: 'auth 91333c9328cfa14b69fca1e0d2c8bb40-us1'
     },
     body: postData
   })
